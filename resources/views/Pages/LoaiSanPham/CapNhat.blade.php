@@ -21,7 +21,7 @@
                     @endif
                   <form action="/loai-san-pham/update" method="POST">
                     @csrf
-                    <input type="text" name="id" value="{{$update[0]->id}}">
+                    <input type="hidden" name="id" value="{{$update[0]->id}}">
                      <div class="form-group">
                         <label >Tên loại sản phấm: </label>
                         <input type="text" class="form-control" name="TenLoaiSanPham" placeholder="Mời bạn nhập tên loại sản phẩm" value="{{$update[0]->TenLoaiSanPham}}">
