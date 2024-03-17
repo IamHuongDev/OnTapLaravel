@@ -31,6 +31,13 @@ Route::get('/loai-san-pham/delete/{id}', [\App\Http\Controllers\LoaiSanPhamContr
 Route::get('/loai-san-pham/edit/{id}', [\App\Http\Controllers\LoaiSanPhamController::class, 'edit']);
 Route::post('/loai-san-pham/update', [\App\Http\Controllers\LoaiSanPhamController::class, 'update']);
 
+Route::get('/dang-ky', [\App\Http\Controllers\UserController::class, 'viewDanngKy']);
+Route::post('/dang-ky', [\App\Http\Controllers\UserController::class, 'dangKy'])->name('dangKy');
+
+Route::get('/dang-nhap', [\App\Http\Controllers\UserController::class, 'viewDanngNhap']);
+Route::post('/dang-nhap', [\App\Http\Controllers\UserController::class, 'dangNhap'])->name('dangNhap');
+
+
 
 
 
