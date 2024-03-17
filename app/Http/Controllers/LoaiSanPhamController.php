@@ -44,7 +44,8 @@ class LoaiSanPhamController extends Controller
         //     DB::insert($sql);
 
         //     return redirect('/loai-san-pham/create');
-        // }
+        //
+
     }
 
 
@@ -55,5 +56,30 @@ class LoaiSanPhamController extends Controller
 
         // return redirect('/loai-san-pham/create');
 
+
+    public function destroy($id)
+    {
+        // dd($id);
+        $sql = "SELECT * FROM `loaisanphams` WHERE `id` = " .$id;
+
+        $delete = DB::select($sql);
+
+        if(count($delete) == 0){
+            $data = DB::select("SELECT * FROM `loaisanphams`");
+            $errorDelete = "Mã sản phẩm không tồn tại";
+            // dd($data);
+
+            return view("Pages.LoaiSanPham.ThemMoi",compact('data', 'errorDelete'));
+        }else {
+            $sql = "DELETE FROM `loaisanphams` WHERE id = ". $id;
+            $delete = DB::delete($sql);
+
+            $errorDelete = "Đã xoá sản phẩm thành công";
+            $data = DB::select("SELECT * FROM `loaisanphams`");
+            return view("Pages.LoaiSanPham.ThemMoi",compact('data', 'errorDelete'));
+
+        }
+
+    }
 
 }

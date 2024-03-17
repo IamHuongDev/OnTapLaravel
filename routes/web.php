@@ -27,4 +27,7 @@ Route::get('/', function () {
 
 Route::get('/loai-san-pham/create', [\App\Http\Controllers\LoaiSanPhamController::class, 'create']);
 Route::post('/loai-san-pham/create', [\App\Http\Controllers\LoaiSanPhamController::class, 'store']);
+Route::get('/loai-san-pham/delete/{id}', [\App\Http\Controllers\LoaiSanPhamController::class, 'destroy']);
+
+
 

@@ -43,6 +43,11 @@
                 <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
                     <h4 class="card-title">Danh sách sản phẩm</h4>
+                    @if (isset($errorDelete))
+                        <div class="alert alert-danger" role="alert">
+                            {{ $errorDelete }}
+                        </div>
+                    @endif
                   </div>
                 </div>
                 <div class="iq-card-body">
@@ -68,12 +73,14 @@
                             <td>{{ $value->TinhTrang}}</td>
                             <td>{{ $value->NgayTao}}</td>
                             <td>
-                                <span class="table-remove">
+
+                              <a href="/loai-san-pham/delete/{{$value->id}}">Delete</a>
+                                {{-- <span class="table-remove">
                                     <button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0 ">Remove</button>
                                 </span>
                                 <span class="table-remove">
                                     <button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0">Remove</button>
-                                </span>
+                                </span> --}}
                             </td>
                           </tr>
                         @endforeach
