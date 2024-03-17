@@ -7,11 +7,11 @@
             <div class="iq-card">
                <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">Thêm mới loại sản phẩm</h4>
+                     <h4 class="card-title">Cập nhật loại sản phẩm</h4>
                   </div>
                </div>
                <div class="iq-card-body">
-                  <p>Thông tin sản phẩm bạn cần thêm mới</p>
+                  <p>Thông tin sản phẩm bạn cần cập nhật</p>
                     @if ($errors->any())
                     @foreach($errors->all() as $error)
                         <div class="alert alert-danger" role="alert">
@@ -19,21 +19,22 @@
                         </div>
                     @endforeach
                     @endif
-                  <form action="/loai-san-pham/create" method="POST">
+                  <form action="/loai-san-pham/update" method="POST">
                     @csrf
+                    <input type="text" name="id" value="{{$update[0]->id}}">
                      <div class="form-group">
                         <label >Tên loại sản phấm: </label>
-                        <input type="text" class="form-control" name="TenLoaiSanPham" placeholder="Mời bạn nhập tên loại sản phẩm">
+                        <input type="text" class="form-control" name="TenLoaiSanPham" placeholder="Mời bạn nhập tên loại sản phẩm" value="{{$update[0]->TenLoaiSanPham}}">
                      </div>
                      <div class="form-group">
                         <label >Trình trạng</label>
                         <select class="custom-select" name="TinhTrang">
-                          <option value=1>Hoạt động</option>
-                          <option value=0>Dừng hoạt động</option>
+                            <option value=1 {{$update[0]->TinhTrang == 1 ? 'selected' : ''}}>Hoạt động</option>
+                            <option value=0 {{$update[0]->TinhTrang == 0 ? 'selected' : ''}}>Dừng hoạt động</option>
                         </select>
                       </div>
 
-                     <button type="submit" class="btn btn-primary">Thêm mới</button>
+                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                   </form>
                </div>
             </div>
@@ -66,7 +67,7 @@
                     <tbody>
 
                         @foreach ($data as $key => $value)
-                        <tr class="{{$value->TinhTrang == 0 ? 'text-danger' : 'text-primary'}}">
+                        <tr  class="{{$value->TinhTrang == 0 ? 'text-danger' : 'text-primary'}}">
                             <th class="text-center" scope="row">{{ $key + 1 }}</th>
                             <td>{{ $value->TenLoaiSanPham}}</td>
                             <td>{{ $value->SlugLoaiSanPham}}</td>
