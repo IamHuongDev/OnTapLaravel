@@ -31,7 +31,7 @@ class UserController extends Controller
     public function dangNhap(Request $request)
     {
         $email = $request->email;
-        $matKhau = $request->password;
+        $matKhau = $request-> password;
 
         $sql = "SELECT * FROM `taikhoan` WHERE `email` = '".$email."' AND `password` = '".$matKhau."'";
 
